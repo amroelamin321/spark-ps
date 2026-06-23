@@ -1,0 +1,293 @@
+.page {
+  padding-top: 5rem;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.heroLabel {
+  display: block;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  color: var(--color-on-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.accentText {
+  color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #94A3B8;
+  line-height: 1.7;
+}
+
+/* Content Section */
+.contentSection {
+  padding: 6rem 0;
+  background-color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.smallLabel {
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.textContent h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.leadText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.textContent p {
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.textContent p:last-child {
+  margin-bottom: 0;
+}
+
+.textContent strong {
+  color: var(--color-primary);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.statCard {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(3, 105, 161, 0.25);
+}
+
+.cardIcon {
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.statCard h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.statCard p {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Mission Section */
+.missionSection {
+  padding: 6rem 0;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.missionBox {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background: white;
+  border: 1px solid var(--color-border);
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.badgeText {
+  display: inline-block;
+  background: rgba(3, 105, 161, 0.08);
+  color: var(--color-accent);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.missionTitle {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.missionText {
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+/* Approach Section */
+.approachSection {
+  padding: 6rem 0;
+  background-color: white;
+}
+
+.sectionHeader {
+  max-width: 700px;
+  margin-bottom: 4rem;
+}
+
+.sectionSubtitle {
+  display: block;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.sectionDesc {
+  color: var(--color-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.approachGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .approachGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1200px) {
+    .approachGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.approachCard {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  padding: 2.25rem;
+  border-radius: 8px;
+  position: relative;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.approachCard:hover {
+  border-color: var(--color-accent);
+  background: white;
+  box-shadow: var(--shadow-md);
+}
+
+.stepNum {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgba(3, 105, 161, 0.15);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.stepTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.stepDesc {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
