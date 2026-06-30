@@ -88,7 +88,7 @@ export default function ElectricBorder({
       ctx.stroke();
 
       // Core
-      ctx.strokeStyle = '#ffffff';
+      ctx.strokeStyle = '#FF4500';
       ctx.lineWidth = 0.6;
       ctx.stroke();
     };

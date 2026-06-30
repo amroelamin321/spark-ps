@@ -15,7 +15,7 @@ export default function EnergyFlowDivider() {
         justifyContent: 'center',
         overflow: 'hidden',
         pointerEvents: 'none',
-        background: 'rgba(7, 9, 12, 0.2)'
+        background: 'transparent'
       }}
     >
       {/* Grid line background */}
@@ -24,8 +24,8 @@ export default function EnergyFlowDivider() {
           position: 'absolute', 
           width: '100%', 
           height: '1px', 
-          backgroundColor: 'rgba(255, 255, 255, 0.08)',
-          boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)'
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 0 10px rgba(0, 0, 0, 0.05)'
         }} 
       />
 
@@ -44,8 +44,8 @@ export default function EnergyFlowDivider() {
           left: 0,
           width: '25vw',
           height: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(240, 90, 0, 0.4) 40%, #ffffff 70%, rgba(240, 90, 0, 0.4) 85%, transparent 100%)',
-          boxShadow: '0 0 8px rgba(240, 90, 0, 0.6), 0 0 2px #fff',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(255, 69, 0, 0.4) 40%, #FF4500 70%, rgba(255, 69, 0, 0.4) 85%, transparent 100%)',
+          boxShadow: '0 0 8px rgba(255, 69, 0, 0.6), 0 0 2px #FF4500',
         }}
       />
 
@@ -69,23 +69,23 @@ export default function EnergyFlowDivider() {
               width: '10px',
               height: '10px',
               borderRadius: '50%',
-              backgroundColor: '#07090C',
-              border: '1.5px solid rgba(240, 90, 0, 0.4)',
+              backgroundColor: 'var(--color-bg-base)',
+              border: '1.5px solid rgba(255, 69, 0, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 5px rgba(240, 90, 0, 0.2)'
+              boxShadow: '0 0 5px rgba(255, 69, 0, 0.4)'
             }}
           >
             {/* Pulsing inner core */}
             <motion.div 
               animate={{
                 scale: [0.8, 1.3, 0.8],
-                backgroundColor: ['rgba(240, 90, 0, 0.4)', 'rgba(255, 255, 255, 0.95)', 'rgba(240, 90, 0, 0.4)'],
+                backgroundColor: ['rgba(255, 69, 0, 0.4)', 'rgba(255, 69, 0, 0.95)', 'rgba(255, 69, 0, 0.4)'],
                 boxShadow: [
-                  '0 0 2px rgba(240, 90, 0, 0.2)',
-                  '0 0 8px rgba(240, 90, 0, 0.8)',
-                  '0 0 2px rgba(240, 90, 0, 0.2)'
+                  '0 0 2px rgba(255, 69, 0, 0.2)',
+                  '0 0 8px rgba(255, 69, 0, 0.8)',
+                  '0 0 2px rgba(255, 69, 0, 0.2)'
                 ]
               }}
               transition={{

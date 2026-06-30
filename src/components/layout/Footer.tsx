@@ -25,8 +25,8 @@ export default function Footer() {
     <footer style={{ borderTop: '1px solid var(--color-border)', padding: '64px 0', background: 'var(--color-bg-base)' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '48px' }}>
         <div>
-          <img src="/sps-logo-clean.png" alt="Spark PS" style={{ height: '40px', marginBottom: '24px' }} />
-          <p style={{ marginBottom: '20px' }}>Empowering Excellence in Electrical Engineering Design & Testing.</p>
+          <img src="/SPARK_LOGO.png" alt="Spark PS" style={{ height: '130px', marginBottom: '24px' }} />
+          <p style={{ color: 'var(--color-text-muted)', maxWidth: '300px', lineHeight: 1.6 }}>Empowering Excellence in Electrical Engineering Design & Testing.</p>
           <div style={{ display: 'flex', gap: '12px' }}>
             <a 
               href="https://www.linkedin.com/company/spark-professional-services-sps/" 
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
         
         <div>
-          <h4 style={{ color: 'white', marginBottom: '24px', fontSize: '1.2rem' }}>Contact Us</h4>
+          <h4 style={{ color: 'var(--color-text-main)', marginBottom: '24px', fontSize: '1.2rem' }}>Contact Us</h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--color-text-muted)' }}>
               <MapPin size={20} color="var(--color-primary)" />
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 style={{ color: 'white', marginBottom: '24px', fontSize: '1.2rem' }}>Services</h4>
+          <h4 style={{ color: 'var(--color-text-main)', marginBottom: '24px', fontSize: '1.2rem' }}>Services</h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--color-text-muted)' }}>
             <span>Primary Substation Design</span>
             <span>Secondary Systems Design</span>

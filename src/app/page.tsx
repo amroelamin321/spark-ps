@@ -15,7 +15,6 @@ import ElectricBorder from '@/components/animations/ElectricBorder';
 import EnergyFlowDivider from '@/components/animations/EnergyFlowDivider';
 import ElectricProjectSlider from '@/components/animations/ElectricProjectSlider';
 import GridSimulator from '@/components/animations/GridSimulator';
-import VideoShowcase from '@/components/common/VideoShowcase';
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -182,9 +181,9 @@ export default function Home() {
                       key={num} 
                       src={`/brands/logo-${num}n.png`} 
                       alt={`Brand Logo ${num}`} 
-                      style={{ height: '48px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1) opacity(0.5)', transition: 'all 0.3s' }} 
-                      onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(0) invert(1) opacity(1)'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.filter = 'brightness(0) invert(1) opacity(0.5)'; }}
+                      style={{ height: '48px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) opacity(0.4)', transition: 'all 0.3s' }} 
+                      onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(0) opacity(0.9)'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.filter = 'brightness(0) opacity(0.4)'; }}
                     />
                   ))}
                </div>
@@ -227,8 +226,8 @@ export default function Home() {
               style={{ padding: '48px', borderLeft: '4px solid var(--color-primary)' }}
             >
               <Award size={48} color="var(--color-primary)" style={{ marginBottom: '24px' }} />
-              <h3 style={{ fontSize: '2rem', marginBottom: '16px', color: '#fff' }}>Our Mission</h3>
-              <p style={{ fontSize: '1.25rem', color: '#E5E7EB', lineHeight: 1.8, fontStyle: 'italic' }}>
+              <h3 style={{ fontSize: '2rem', marginBottom: '16px', color: 'var(--color-text-main)' }}>Our Mission</h3>
+              <p style={{ fontSize: '1.25rem', color: 'var(--color-text-muted)', lineHeight: 1.8, fontStyle: 'italic' }}>
                 &ldquo;SPS is committed to providing quality electrical engineering services to enhance the communities where our clients live and work. A Safer Community.&rdquo;
               </p>
             </motion.div>
@@ -237,7 +236,7 @@ export default function Home() {
       </section>
 
       {/* Intro / Stats Strip */}
-      <section className="section" style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+      <section className="section" style={{ background: '#FAFAFA', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '40px' }}>
           {[
             { value: "15+", label: "Years Experience" },
@@ -259,9 +258,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* Video Showcase Section */}
-      <VideoShowcase />
 
       {/* Featured Services */}
       <section className="section" style={{ position: 'relative' }}>
@@ -320,7 +316,7 @@ export default function Home() {
       </section>
 
       {/* Industries Served */}
-      <section className="section" style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+      <section className="section" style={{ background: '#FAFAFA', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 64px' }}>
             <span className="breadcrumb">Industries</span>
@@ -340,7 +336,7 @@ export default function Home() {
                 style={{ padding: '32px', borderRadius: 'var(--radius-md)' }}
               >
                 <ind.icon size={32} color="var(--color-primary)" style={{ marginBottom: '16px' }} />
-                <h4 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '8px' }}>{ind.title}</h4>
+                <h4 style={{ fontSize: '1.3rem', color: 'var(--color-text-main)', marginBottom: '8px' }}>{ind.title}</h4>
                 <p>{ind.desc}</p>
               </motion.div>
             ))}
@@ -377,7 +373,7 @@ export default function Home() {
                       <CheckCircle size={16} />
                     </div>
                     <div>
-                      <h5 style={{ fontSize: '1.1rem', color: 'white', marginBottom: '4px' }}>{item.title}</h5>
+                      <h5 style={{ fontSize: '1.1rem', color: 'var(--color-text-main)', marginBottom: '4px' }}>{item.title}</h5>
                       <p>{item.desc}</p>
                     </div>
                   </div>
@@ -401,7 +397,7 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="section" style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+      <section className="section" style={{ background: '#FAFAFA', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '64px', flexWrap: 'wrap', gap: '24px' }}>
             <div>
@@ -463,7 +459,7 @@ export default function Home() {
                   {test.text}
                 </p>
                 <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '20px', marginTop: 'auto' }}>
-                  <h4 style={{ color: 'white', fontSize: '1.1rem', marginBottom: '4px' }}>{test.name}</h4>
+                  <h4 style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', marginBottom: '4px' }}>{test.name}</h4>
                   <span style={{ color: 'var(--color-primary)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{test.role}</span>
                 </div>
               </motion.div>
@@ -487,7 +483,7 @@ export default function Home() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
               zIndex: 999,
@@ -511,8 +507,9 @@ export default function Home() {
                 overflowY: 'auto',
                 padding: '40px',
                 borderRadius: 'var(--radius-lg)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'rgba(17, 20, 26, 0.9)',
+                border: '1px solid var(--color-border)',
+                background: 'var(--color-bg-elevated)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
                 position: 'relative'
               }}
             >
@@ -527,7 +524,7 @@ export default function Home() {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.03)',
+                  background: 'var(--color-bg-base)',
                   border: '1px solid var(--color-border)',
                   display: 'flex',
                   alignItems: 'center',
@@ -564,7 +561,7 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <h2 style={{ fontSize: '2.2rem', marginBottom: '16px', color: '#fff', lineHeight: 1.2 }}>
+                  <h2 style={{ fontSize: '2.2rem', marginBottom: '16px', color: 'var(--color-text-main)', lineHeight: 1.2 }}>
                     {selectedProject.title}
                   </h2>
 
@@ -572,7 +569,7 @@ export default function Home() {
                     {selectedProject.description}
                   </p>
 
-                  <h4 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '12px', borderBottom: '1px solid var(--color-border)', paddingBottom: '8px' }}>
+                  <h4 style={{ fontSize: '1.2rem', color: 'var(--color-text-main)', marginBottom: '12px', borderBottom: '1px solid var(--color-border)', paddingBottom: '8px' }}>
                     Scope of Work
                   </h4>
                   <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingLeft: '20px', color: 'var(--color-text-muted)' }}>

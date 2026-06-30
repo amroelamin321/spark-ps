@@ -42,11 +42,11 @@ export default function Navbar() {
         <div className="container nav-container" style={{ position: 'relative' }}>
           <Link href="/" className="nav-logo" style={{ zIndex: 100 }} onClick={() => setIsOpen(false)}>
             <motion.img 
-              src="/sps-logo-clean.png" 
+              src="/SPARK_LOGO.png" 
               alt="Spark PS Logo" 
               animate={{ scale: scrolled ? 0.85 : 1 }}
               transition={{ duration: 0.3 }}
-              style={{ transformOrigin: 'left center', height: '48px', width: 'auto' }}
+              style={{ transformOrigin: 'left center', height: '150px', width: 'auto' }}
             />
           </Link>
 

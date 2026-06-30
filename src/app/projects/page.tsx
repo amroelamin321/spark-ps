@@ -139,7 +139,7 @@ export default function Projects() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
               zIndex: 999,
@@ -163,8 +163,9 @@ export default function Projects() {
                 overflowY: 'auto',
                 padding: '40px',
                 borderRadius: 'var(--radius-lg)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'rgba(17, 20, 26, 0.9)',
+                border: '1px solid var(--color-border)',
+                background: 'var(--color-bg-elevated)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
                 position: 'relative'
               }}
             >
@@ -179,7 +180,7 @@ export default function Projects() {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.03)',
+                  background: 'var(--color-bg-base)',
                   border: '1px solid var(--color-border)',
                   display: 'flex',
                   alignItems: 'center',
@@ -216,7 +217,7 @@ export default function Projects() {
                     </span>
                   </div>
 
-                  <h2 style={{ fontSize: '2.2rem', marginBottom: '16px', color: '#fff', lineHeight: 1.2 }}>
+                  <h2 style={{ fontSize: '2.2rem', marginBottom: '16px', color: 'var(--color-text-main)', lineHeight: 1.2 }}>
                     {selectedProject.title}
                   </h2>
 
@@ -224,7 +225,7 @@ export default function Projects() {
                     {selectedProject.description}
                   </p>
 
-                  <h4 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '12px', borderBottom: '1px solid var(--color-border)', paddingBottom: '8px' }}>
+                  <h4 style={{ fontSize: '1.2rem', color: 'var(--color-text-main)', marginBottom: '12px', borderBottom: '1px solid var(--color-border)', paddingBottom: '8px' }}>
                     Scope of Work
                   </h4>
                   <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingLeft: '20px', color: 'var(--color-text-muted)' }}>

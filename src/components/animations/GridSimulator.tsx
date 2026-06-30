@@ -152,7 +152,7 @@ export default function GridSimulator() {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.lineWidth = 4;
         ctx.stroke();
 
@@ -169,7 +169,7 @@ export default function GridSimulator() {
         } else if (status === 'charging') {
           ctx.strokeStyle = 'rgba(34, 197, 94, 0.4)'; // Green excess power
         } else {
-          ctx.strokeStyle = 'rgba(240, 90, 0, 0.4)'; // Orange active balance
+          ctx.strokeStyle = 'rgba(255, 69, 0, 0.4)'; // Orange active balance
         }
         ctx.stroke();
 
@@ -220,7 +220,7 @@ export default function GridSimulator() {
         ctx.beginPath();
         ctx.moveTo(substationX, bessY);
         ctx.lineTo(substationX, centerY);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.strokeStyle = 'rgba(255, 69, 0, 0.1)';
         ctx.lineWidth = 2;
         ctx.stroke();
       }
@@ -240,7 +240,7 @@ export default function GridSimulator() {
         ctx.fillStyle = color;
         ctx.fill();
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.fillStyle = 'rgba(255, 69, 0, 0.6)';
         ctx.font = '9px monospace';
         ctx.textAlign = 'center';
         ctx.fillText(label, x, y - 18);
@@ -286,7 +286,7 @@ export default function GridSimulator() {
         padding: '32px',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--color-border)',
-        background: 'rgba(17, 20, 26, 0.5)',
+        background: 'var(--color-bg-elevated)',
         backdropFilter: 'var(--blur-glass)',
         boxShadow: 'var(--shadow-glass)',
       }}
@@ -305,7 +305,7 @@ export default function GridSimulator() {
           <span style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Microgrid Lab Console
           </span>
-          <h4 style={{ color: 'white', fontSize: '1.6rem', marginTop: '4px', marginBottom: '8px' }}>
+          <h4 style={{ color: 'var(--color-text-main)', fontSize: '1.6rem', marginTop: '4px', marginBottom: '8px' }}>
             Grid Stability Sandbox
           </h4>
           <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
@@ -330,7 +330,7 @@ export default function GridSimulator() {
               style={{
                 width: '100%',
                 accentColor: '#22c55e',
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgba(255, 69, 0, 0.1)',
                 height: '6px',
                 borderRadius: '100px',
                 cursor: 'pointer',
@@ -353,7 +353,7 @@ export default function GridSimulator() {
               style={{
                 width: '100%',
                 accentColor: '#3b82f6',
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgba(255, 69, 0, 0.1)',
                 height: '6px',
                 borderRadius: '100px',
                 cursor: 'pointer',
@@ -371,7 +371,7 @@ export default function GridSimulator() {
             padding: '16px',
             borderRadius: 'var(--radius-sm)',
             border: `1px solid ${stabilizerActive ? 'rgba(16, 185, 129, 0.2)' : 'var(--color-border)'}`,
-            background: stabilizerActive ? 'rgba(16, 185, 129, 0.05)' : 'rgba(0, 0, 0, 0.1)',
+            background: stabilizerActive ? 'rgba(16, 185, 129, 0.05)' : 'rgba(0, 0, 0, 0.03)',
             transition: 'all 0.3s',
           }}
         >
@@ -381,7 +381,7 @@ export default function GridSimulator() {
                 width: '38px',
                 height: '38px',
                 borderRadius: '50%',
-                backgroundColor: stabilizerActive ? 'rgba(16, 185, 129, 0.1)' : 'rgba(255, 255, 255, 0.03)',
+                backgroundColor: stabilizerActive ? 'rgba(16, 185, 129, 0.1)' : 'rgba(0, 0, 0, 0.1)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -392,7 +392,7 @@ export default function GridSimulator() {
               <Battery size={20} />
             </div>
             <div>
-              <h5 style={{ color: 'white', fontSize: '0.95rem', margin: 0 }}>SPS Grid Stabilizer</h5>
+              <h5 style={{ color: 'var(--color-text-main)', fontSize: '0.95rem', margin: 0 }}>SPS Grid Stabilizer</h5>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Automated BESS Reserve Power</span>
             </div>
           </div>
@@ -404,7 +404,7 @@ export default function GridSimulator() {
               width: '56px',
               height: '30px',
               borderRadius: '100px',
-              backgroundColor: stabilizerActive ? '#10b981' : 'rgba(255, 255, 255, 0.1)',
+              backgroundColor: stabilizerActive ? '#10b981' : 'rgba(0, 0, 0, 0.2)',
               padding: '3px',
               display: 'flex',
               alignItems: 'center',
@@ -444,7 +444,7 @@ export default function GridSimulator() {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '12px',
-            background: 'rgba(0, 0, 0, 0.2)',
+            background: 'rgba(0, 0, 0, 0.05)',
             border: '1px solid var(--color-border)',
             borderRadius: '12px',
             padding: '16px',
@@ -506,10 +506,10 @@ export default function GridSimulator() {
             borderRadius: 'var(--radius-sm)',
             background: gridStatus === 'unstable' 
               ? 'rgba(239, 68, 68, 0.08)' 
-              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.08)' : 'rgba(240, 90, 0, 0.08)'),
+              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.08)' : 'rgba(255, 69, 0, 0.08)'),
             border: `1px solid ${gridStatus === 'unstable' 
               ? 'rgba(239, 68, 68, 0.2)' 
-              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(240, 90, 0, 0.2)')}`,
+              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(255, 69, 0, 0.2)')}`,
             color: gridStatus === 'unstable' 
               ? '#ef4444' 
               : (gridStatus === 'charging' ? '#22c55e' : '#ffaa33'),

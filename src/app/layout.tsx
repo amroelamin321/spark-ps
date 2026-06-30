@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/sps-logo-clean.png" type="image/png" />
+        <link rel="icon" href="/SPARK_LOGO.png" type="image/png" />
       </head>
       <body>
         <AnimatedBackground />

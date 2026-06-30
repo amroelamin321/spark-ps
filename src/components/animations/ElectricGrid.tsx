@@ -118,17 +118,17 @@ export default function ElectricGrid() {
       drawSegment(x1, y1, x2, y2, displace);
       
       // Draw outer glowing beam
-      ctx.strokeStyle = 'rgba(240, 90, 0, 0.15)';
+      ctx.strokeStyle = 'rgba(255, 69, 0, 0.3)';
       ctx.lineWidth = 4;
       ctx.stroke();
 
       // Draw middle neon beam
-      ctx.strokeStyle = 'rgba(255, 123, 41, 0.6)';
+      ctx.strokeStyle = 'rgba(255, 69, 0, 0.8)';
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Draw white hot core
-      ctx.strokeStyle = '#ffffff';
+      // Draw hot core
+      ctx.strokeStyle = '#FF4500';
       ctx.lineWidth = 0.8;
       ctx.stroke();
     };
@@ -210,7 +210,7 @@ export default function ElectricGrid() {
             const alpha = (1 - dist / 180) * 0.08;
             ctx.moveTo(n1.x, n1.y);
             ctx.lineTo(n2.x, n2.y);
-            ctx.strokeStyle = `rgba(240, 90, 0, ${alpha})`;
+            ctx.strokeStyle = `rgba(255, 69, 0, ${alpha})`;
             ctx.lineWidth = 1;
           }
         }
@@ -221,13 +221,13 @@ export default function ElectricGrid() {
       nodes.forEach((node) => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(240, 90, 0, 0.4)';
+        ctx.fillStyle = 'rgba(255, 69, 0, 0.6)';
         ctx.fill();
         
         // Draw tiny node core
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius * 0.4, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = '#FF4500';
         ctx.fill();
       });
 
@@ -242,9 +242,9 @@ export default function ElectricGrid() {
 
         // Pulse dot glow
         const glowGrad = ctx.createRadialGradient(px, py, 0, px, py, 6);
-        glowGrad.addColorStop(0, '#ffffff');
-        glowGrad.addColorStop(0.3, 'rgba(255, 123, 41, 0.8)');
-        glowGrad.addColorStop(1, 'rgba(240, 90, 0, 0)');
+        glowGrad.addColorStop(0, '#FF4500');
+        glowGrad.addColorStop(0.3, 'rgba(255, 69, 0, 0.8)');
+        glowGrad.addColorStop(1, 'rgba(255, 69, 0, 0)');
         
         ctx.beginPath();
         ctx.arc(px, py, 6, 0, Math.PI * 2);
@@ -287,7 +287,7 @@ export default function ElectricGrid() {
             // Draw glowing contact ring at mouse
             ctx.beginPath();
             ctx.arc(mouse.x, mouse.y, Math.random() * 4 + 2, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.fillStyle = 'rgba(255, 69, 0, 0.8)';
             ctx.shadowBlur = 8;
             ctx.shadowColor = '#F05A00';
             ctx.fill();
@@ -364,7 +364,6 @@ export default function ElectricGrid() {
           width: '100%',
           height: '100%',
           opacity: 0.85,
-          mixBlendMode: 'screen',
         }}
       />
     </div>

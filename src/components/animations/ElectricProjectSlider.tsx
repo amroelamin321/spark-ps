@@ -295,7 +295,7 @@ export default function ElectricProjectSlider({
                 style={{
                   fontSize: 'clamp(2rem, 3.5vw, 2.6rem)',
                   lineHeight: 1.1,
-                  color: 'white',
+                  color: 'var(--color-text-main)',
                 }}
               >
                 {currentProject.title}
@@ -307,7 +307,7 @@ export default function ElectricProjectSlider({
               <div>
                 <h5
                   style={{
-                    color: 'white',
+                    color: 'var(--color-text-main)',
                     fontSize: '1rem',
                     marginBottom: '12px',
                     textTransform: 'uppercase',
@@ -397,7 +397,7 @@ export default function ElectricProjectSlider({
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to top, rgba(7, 9, 12, 0.4), transparent)',
+              background: 'linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent)',
               pointerEvents: 'none',
             }}
           />
@@ -411,7 +411,7 @@ export default function ElectricProjectSlider({
               width: '100%',
               height: '100%',
               pointerEvents: 'none',
-              mixBlendMode: 'screen',
+              mixBlendMode: 'multiply',
               zIndex: 3,
             }}
           />
@@ -434,9 +434,9 @@ export default function ElectricProjectSlider({
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: 'rgba(17, 20, 26, 0.8)',
+                background: 'var(--color-bg-elevated)',
                 border: '1px solid var(--color-border)',
-                color: 'white',
+                color: 'var(--color-text-main)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -454,9 +454,9 @@ export default function ElectricProjectSlider({
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: 'rgba(17, 20, 26, 0.8)',
+                background: 'var(--color-bg-elevated)',
                 border: '1px solid var(--color-border)',
-                color: 'white',
+                color: 'var(--color-text-main)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -478,8 +478,8 @@ export default function ElectricProjectSlider({
               bottom: '24px',
               padding: '12px 20px',
               borderRadius: '100px',
-              background: 'linear-gradient(135deg, rgba(255, 123, 41, 0.9) 0%, rgba(240, 90, 0, 0.9) 100%)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.9) 0%, rgba(255, 69, 0, 1) 100%)',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
               color: 'white',
               fontSize: '0.85rem',
               fontWeight: 600,
@@ -489,7 +489,7 @@ export default function ElectricProjectSlider({
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
-              boxShadow: '0 4px 15px rgba(240, 90, 0, 0.3)',
+              boxShadow: '0 4px 15px rgba(255, 69, 0, 0.4)',
             }}
             className="interactive"
           >
@@ -507,7 +507,7 @@ export default function ElectricProjectSlider({
           width: '100%',
           display: 'flex',
           alignItems: 'center',
-          background: 'rgba(17, 20, 26, 0.3)',
+          background: 'var(--color-bg-elevated)',
           border: '1px solid var(--color-border)',
           borderRadius: '12px',
           padding: '0 24px',
@@ -520,7 +520,7 @@ export default function ElectricProjectSlider({
             left: '30px',
             right: '30px',
             height: '1px',
-            background: 'rgba(255, 255, 255, 0.05)',
+            background: 'rgba(255, 69, 0, 0.05)',
             zIndex: 1,
           }}
         />
@@ -535,7 +535,7 @@ export default function ElectricProjectSlider({
             height: '100%',
             pointerEvents: 'none',
             zIndex: 2,
-            mixBlendMode: 'screen',
+            mixBlendMode: 'multiply',
           }}
         />
 
@@ -572,9 +572,9 @@ export default function ElectricProjectSlider({
                     width: '14px',
                     height: '14px',
                     borderRadius: '50%',
-                    background: isActive ? '#ffffff' : '#07090C',
-                    border: `2px solid ${isActive ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.15)'}`,
-                    boxShadow: isActive ? '0 0 10px var(--color-primary), 0 0 3px #fff' : 'none',
+                    background: isActive ? 'var(--color-primary)' : 'var(--color-bg-elevated)',
+                    border: `2px solid ${isActive ? 'var(--color-primary)' : 'rgba(0, 0, 0, 0.1)'}`,
+                    boxShadow: isActive ? '0 0 10px var(--color-primary-glow)' : 'none',
                     transition: 'all 0.3s',
                   }}
                 />
@@ -584,7 +584,7 @@ export default function ElectricProjectSlider({
                   style={{
                     fontSize: '0.65rem',
                     fontFamily: 'monospace',
-                    color: isActive ? 'white' : 'var(--color-text-muted)',
+                    color: isActive ? 'var(--color-text-main)' : 'var(--color-text-muted)',
                     letterSpacing: '0.05em',
                     transition: 'all 0.3s',
                     textTransform: 'uppercase',

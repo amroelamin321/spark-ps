@@ -7,7 +7,7 @@ export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState('');
   const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
-    { text: "Hello! Welcome to Spark Professional Services. How can we assist you with your electrical engineering needs today?", isBot: true }
+    { text: "Welcome to Spark. I am your AI Concierge. How can I elevate your experience today?", isBot: true }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -60,8 +60,8 @@ export default function ChatWidget() {
             <div className="chat-header">
               <MessageSquare size={24} />
               <div>
-                <h4>Spark Assistant</h4>
-                <p>Typically replies in minutes</p>
+                <h4>AI Concierge</h4>
+                <p>Powered by advanced AI intelligence</p>
               </div>
             </div>
             
