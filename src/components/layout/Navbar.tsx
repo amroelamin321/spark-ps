@@ -44,9 +44,9 @@ export default function Navbar() {
             <motion.img 
               src="/SPARK_LOGO.png" 
               alt="Spark PS Logo" 
-              animate={{ scale: scrolled ? 0.85 : 1 }}
+              animate={{ height: scrolled ? 64 : 150 }}
               transition={{ duration: 0.3 }}
-              style={{ transformOrigin: 'left center', height: '150px', width: 'auto' }}
+              style={{ transformOrigin: 'left center', width: 'auto' }}
             />
           </Link>
 

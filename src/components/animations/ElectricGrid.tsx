@@ -46,13 +46,16 @@ export default function ElectricGrid() {
     const resize = () => {
       if (!canvas || !containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
+      const isWidthSignificantChange = Math.abs(rect.width - width) > 10;
       width = rect.width;
       height = rect.height;
       canvas.width = width;
       canvas.height = height;
 
-      // Re-initialize nodes based on screen size
-      initNodes();
+      // Re-initialize nodes based on screen size only if significant width change
+      if (isWidthSignificantChange || nodes.length === 0) {
+        initNodes();
+      }
     };
 
     const initNodes = () => {
