@@ -15,6 +15,7 @@ import ElectricBorder from '@/components/animations/ElectricBorder';
 import EnergyFlowDivider from '@/components/animations/EnergyFlowDivider';
 import ElectricProjectSlider from '@/components/animations/ElectricProjectSlider';
 import GridSimulator from '@/components/animations/GridSimulator';
+import DataCenterPowerShowcase from '@/components/common/DataCenterPowerShowcase';
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -343,6 +344,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <DataCenterPowerShowcase />
 
       {/* Why Choose Spark / Core Pillars */}
       <section className="section">
