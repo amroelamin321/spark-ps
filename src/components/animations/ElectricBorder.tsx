@@ -78,7 +78,7 @@ export default function ElectricBorder({
       drawSub(x1, y1, x2, y2, displace);
 
       // Glow beam
-      ctx.strokeStyle = 'rgba(240, 90, 0, 0.2)';
+      ctx.strokeStyle = 'rgba(226, 90, 0, 0.2)';
       ctx.lineWidth = 3.5;
       ctx.stroke();
 
@@ -88,7 +88,7 @@ export default function ElectricBorder({
       ctx.stroke();
 
       // Core
-      ctx.strokeStyle = '#FF4500';
+      ctx.strokeStyle = '#E25A00';
       ctx.lineWidth = 0.6;
       ctx.stroke();
     };
@@ -219,7 +219,7 @@ export default function ElectricBorder({
           borderRadius,
           border: '1px solid var(--color-primary)',
           boxShadow: isHovered 
-            ? '0 0 15px rgba(240, 90, 0, 0.25), inset 0 0 10px rgba(240, 90, 0, 0.15)' 
+            ? '0 0 15px rgba(226, 90, 0, 0.25), inset 0 0 10px rgba(226, 90, 0, 0.15)' 
             : '0 0 0px transparent',
           opacity: isHovered ? 0.8 : 0,
           pointerEvents: 'none',

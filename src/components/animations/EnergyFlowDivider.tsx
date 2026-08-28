@@ -44,8 +44,8 @@ export default function EnergyFlowDivider() {
           left: 0,
           width: '25vw',
           height: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(255, 69, 0, 0.4) 40%, #FF4500 70%, rgba(255, 69, 0, 0.4) 85%, transparent 100%)',
-          boxShadow: '0 0 8px rgba(255, 69, 0, 0.6), 0 0 2px #FF4500',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(226, 90, 0, 0.4) 40%, #E25A00 70%, rgba(226, 90, 0, 0.4) 85%, transparent 100%)',
+          boxShadow: '0 0 8px rgba(226, 90, 0, 0.6), 0 0 2px #E25A00',
         }}
       />
 
@@ -70,22 +70,22 @@ export default function EnergyFlowDivider() {
               height: '10px',
               borderRadius: '50%',
               backgroundColor: 'var(--color-bg-base)',
-              border: '1.5px solid rgba(255, 69, 0, 0.4)',
+              border: '1.5px solid rgba(226, 90, 0, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 5px rgba(255, 69, 0, 0.4)'
+              boxShadow: '0 0 5px rgba(226, 90, 0, 0.4)'
             }}
           >
             {/* Pulsing inner core */}
             <motion.div 
               animate={{
                 scale: [0.8, 1.3, 0.8],
-                backgroundColor: ['rgba(255, 69, 0, 0.4)', 'rgba(255, 69, 0, 0.95)', 'rgba(255, 69, 0, 0.4)'],
+                backgroundColor: ['rgba(226, 90, 0, 0.4)', 'rgba(226, 90, 0, 0.95)', 'rgba(226, 90, 0, 0.4)'],
                 boxShadow: [
-                  '0 0 2px rgba(255, 69, 0, 0.2)',
-                  '0 0 8px rgba(255, 69, 0, 0.8)',
-                  '0 0 2px rgba(255, 69, 0, 0.2)'
+                  '0 0 2px rgba(226, 90, 0, 0.2)',
+                  '0 0 8px rgba(226, 90, 0, 0.8)',
+                  '0 0 2px rgba(226, 90, 0, 0.2)'
                 ]
               }}
               transition={{

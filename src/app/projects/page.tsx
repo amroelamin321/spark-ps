@@ -7,10 +7,20 @@ import ChatWidget from '@/components/chat/ChatWidget';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin, Tag, ArrowRight } from 'lucide-react';
 
-export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  location: string;
+  image: string;
+  description: string;
+  scope: string[];
+}
 
-  const projects = [
+export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const projects: Project[] = [
     {
       id: 1,
       title: "The largest off-grid poultry farm in Australia, Griffith, NSW",

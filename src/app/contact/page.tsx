@@ -77,7 +77,7 @@ export default function Contact() {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginBottom: '48px' }}>
               <div style={{ display: 'flex', gap: '24px' }}>
-                <div style={{ width: '64px', height: '64px', background: 'rgba(240, 90, 0, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
+                <div style={{ width: '64px', height: '64px', background: 'rgba(226, 90, 0, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
                   <MapPin size={32} />
                 </div>
                 <div>
@@ -87,7 +87,7 @@ export default function Contact() {
               </div>
               
               <div style={{ display: 'flex', gap: '24px' }}>
-                <div style={{ width: '64px', height: '64px', background: 'rgba(240, 90, 0, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
+                <div style={{ width: '64px', height: '64px', background: 'rgba(226, 90, 0, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
                   <Phone size={32} />
                 </div>
                 <div>
@@ -103,7 +103,7 @@ export default function Contact() {
               </div>
 
               <div style={{ display: 'flex', gap: '24px' }}>
-                <div style={{ width: '64px', height: '64px', background: 'rgba(240, 90, 0, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
+                <div style={{ width: '64px', height: '64px', background: 'rgba(226, 90, 0, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
                   <Mail size={32} />
                 </div>
                 <div>

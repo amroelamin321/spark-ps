@@ -1,7 +1,15 @@
 import type { Metadata } from 'next'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import CustomCursor from '@/components/common/CustomCursor'
 import AnimatedBackground from '@/components/common/AnimatedBackground'
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://spark-ps.com.au'),
@@ -35,7 +43,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/SPARK_LOGO.png" type="image/png" />
       </head>
-      <body>
+      <body className={`${plusJakartaSans.variable} ${plusJakartaSans.className}`}>
         <AnimatedBackground />
         <CustomCursor />
         {children}

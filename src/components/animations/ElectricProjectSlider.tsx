@@ -90,13 +90,13 @@ export default function ElectricProjectSlider({
       drawSub(x1, y1, x2, y2, displace);
 
       // Glow beam
-      ctx.strokeStyle = 'rgba(240, 90, 0, 0.3)';
-      ctx.lineWidth = 6;
+      ctx.strokeStyle = 'rgba(226, 90, 0, 0.18)';
+      ctx.lineWidth = 3;
       ctx.stroke();
 
       // Inner beam
-      ctx.strokeStyle = 'rgba(255, 123, 41, 0.8)';
-      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = 'rgba(226, 90, 0, 0.5)';
+      ctx.lineWidth = 1.25;
       ctx.stroke();
 
       // Core
@@ -194,8 +194,8 @@ export default function ElectricProjectSlider({
           }
           ctx.lineTo(tx, ty);
         }
-        ctx.strokeStyle = 'rgba(255, 123, 41, 0.7)';
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(226, 90, 0, 0.35)';
+        ctx.lineWidth = 0.75;
         ctx.stroke();
       };
 
@@ -478,7 +478,7 @@ export default function ElectricProjectSlider({
               bottom: '24px',
               padding: '12px 20px',
               borderRadius: '100px',
-              background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.9) 0%, rgba(255, 69, 0, 1) 100%)',
+              background: 'linear-gradient(135deg, rgba(226, 90, 0, 0.9) 0%, rgba(226, 90, 0, 1) 100%)',
               border: '1px solid rgba(0, 0, 0, 0.1)',
               color: 'white',
               fontSize: '0.85rem',
@@ -489,7 +489,7 @@ export default function ElectricProjectSlider({
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
-              boxShadow: '0 4px 15px rgba(255, 69, 0, 0.4)',
+              boxShadow: '0 4px 15px rgba(226, 90, 0, 0.4)',
             }}
             className="interactive"
           >
@@ -520,7 +520,7 @@ export default function ElectricProjectSlider({
             left: '30px',
             right: '30px',
             height: '1px',
-            background: 'rgba(255, 69, 0, 0.05)',
+            background: 'rgba(226, 90, 0, 0.05)',
             zIndex: 1,
           }}
         />

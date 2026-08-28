@@ -169,7 +169,7 @@ export default function GridSimulator() {
         } else if (status === 'charging') {
           ctx.strokeStyle = 'rgba(34, 197, 94, 0.4)'; // Green excess power
         } else {
-          ctx.strokeStyle = 'rgba(255, 69, 0, 0.4)'; // Orange active balance
+          ctx.strokeStyle = 'rgba(226, 90, 0, 0.4)'; // Orange active balance
         }
         ctx.stroke();
 
@@ -220,7 +220,7 @@ export default function GridSimulator() {
         ctx.beginPath();
         ctx.moveTo(substationX, bessY);
         ctx.lineTo(substationX, centerY);
-        ctx.strokeStyle = 'rgba(255, 69, 0, 0.1)';
+        ctx.strokeStyle = 'rgba(226, 90, 0, 0.1)';
         ctx.lineWidth = 2;
         ctx.stroke();
       }
@@ -240,7 +240,7 @@ export default function GridSimulator() {
         ctx.fillStyle = color;
         ctx.fill();
 
-        ctx.fillStyle = 'rgba(255, 69, 0, 0.6)';
+        ctx.fillStyle = 'rgba(226, 90, 0, 0.6)';
         ctx.font = '9px monospace';
         ctx.textAlign = 'center';
         ctx.fillText(label, x, y - 18);
@@ -330,7 +330,7 @@ export default function GridSimulator() {
               style={{
                 width: '100%',
                 accentColor: '#22c55e',
-                background: 'rgba(255, 69, 0, 0.1)',
+                background: 'rgba(226, 90, 0, 0.1)',
                 height: '6px',
                 borderRadius: '100px',
                 cursor: 'pointer',
@@ -353,7 +353,7 @@ export default function GridSimulator() {
               style={{
                 width: '100%',
                 accentColor: '#3b82f6',
-                background: 'rgba(255, 69, 0, 0.1)',
+                background: 'rgba(226, 90, 0, 0.1)',
                 height: '6px',
                 borderRadius: '100px',
                 cursor: 'pointer',
@@ -506,10 +506,10 @@ export default function GridSimulator() {
             borderRadius: 'var(--radius-sm)',
             background: gridStatus === 'unstable' 
               ? 'rgba(239, 68, 68, 0.08)' 
-              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.08)' : 'rgba(255, 69, 0, 0.08)'),
+              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.08)' : 'rgba(226, 90, 0, 0.08)'),
             border: `1px solid ${gridStatus === 'unstable' 
               ? 'rgba(239, 68, 68, 0.2)' 
-              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(255, 69, 0, 0.2)')}`,
+              : (gridStatus === 'charging' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(226, 90, 0, 0.2)')}`,
             color: gridStatus === 'unstable' 
               ? '#ef4444' 
               : (gridStatus === 'charging' ? '#22c55e' : '#ffaa33'),

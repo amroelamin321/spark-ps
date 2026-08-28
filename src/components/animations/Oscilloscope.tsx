@@ -138,7 +138,7 @@ export default function Oscilloscope() {
       }
 
       // Draw outer glowing line
-      ctx.strokeStyle = mouse.isHovering ? 'rgba(255, 123, 41, 0.4)' : 'rgba(240, 90, 0, 0.4)';
+      ctx.strokeStyle = mouse.isHovering ? 'rgba(255, 123, 41, 0.4)' : 'rgba(226, 90, 0, 0.4)';
       ctx.lineWidth = 4;
       ctx.stroke();
 

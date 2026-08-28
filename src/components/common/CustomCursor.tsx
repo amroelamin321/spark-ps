@@ -50,7 +50,7 @@ export default function CustomCursor() {
       if (!isVisible) setIsVisible(true);
 
       // Spawn very subtle trail sparks when hovering interactive items
-      if (isHovering && Math.random() < 0.25) {
+      if (isHovering && Math.random() < 0.12) {
         spawnSpark(clientX, clientY, 1, 'trail');
       }
     };
@@ -75,7 +75,7 @@ export default function CustomCursor() {
 
     // Click triggers active lightning sparks burst
     const handleClick = (e: MouseEvent) => {
-      spawnSpark(e.clientX, e.clientY, 12, 'click');
+      spawnSpark(e.clientX, e.clientY, 6, 'click');
     };
 
     window.addEventListener('mousemove', updateMousePosition);
@@ -87,7 +87,7 @@ export default function CustomCursor() {
     // 3. Animation loop for particles
     const spawnSpark = (x: number, y: number, count: number, type: 'click' | 'trail') => {
       const newSparks = [...sparksRef.current];
-      const colors = ['rgba(240, 90, 0, 0.8)', 'rgba(255, 123, 41, 0.9)', '#ffffff'];
+      const colors = ['rgba(226, 90, 0, 0.8)', 'rgba(255, 123, 41, 0.9)', '#ffffff'];
 
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
@@ -205,8 +205,8 @@ export default function CustomCursor() {
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'rgba(240, 90, 0, 0.15)' : 'transparent',
-          borderColor: isHovering ? 'rgba(240, 90, 0, 0)' : 'rgba(240, 90, 0, 0.5)',
+          backgroundColor: isHovering ? 'rgba(226, 90, 0, 0.15)' : 'rgba(226, 90, 0, 0)',
+          borderColor: isHovering ? 'rgba(226, 90, 0, 0)' : 'rgba(226, 90, 0, 0.5)',
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.15 }}

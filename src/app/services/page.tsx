@@ -76,7 +76,7 @@ export default function Services() {
                 style={{ padding: '64px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px', alignItems: 'center' }}
               >
                 <div>
-                  <div style={{ width: '80px', height: '80px', background: 'rgba(240, 90, 0, 0.1)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', marginBottom: '32px' }}>
+                  <div style={{ width: '80px', height: '80px', background: 'var(--color-primary-glow)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', marginBottom: '32px' }}>
                     <service.icon size={40} />
                   </div>
                   <h2 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>{service.title}</h2>
@@ -91,7 +91,7 @@ export default function Services() {
                   </p>
                   <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                     {service.features.map((feat, i) => (
-                      <span key={i} style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--color-border)', borderRadius: '100px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
+                      <span key={i} style={{ padding: '8px 16px', background: 'var(--color-bg-base)', border: '1px solid var(--color-border)', borderRadius: '100px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
                         {feat}
                       </span>
                     ))}

@@ -1,32 +1,33 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowRight, Zap, Shield, Activity, Settings, CheckCircle, 
-  ChevronRight, MapPin, Tag, X, Award, Users, Target, Briefcase 
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ArrowRight, Zap, Shield, Activity, Settings, CheckCircle,
+  ChevronRight, MapPin, Tag, X, Award, Target, Briefcase
 } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ChatWidget from '@/components/chat/ChatWidget';
 import Link from 'next/link';
-import ElectricGrid from '@/components/animations/ElectricGrid';
 import ElectricBorder from '@/components/animations/ElectricBorder';
 import EnergyFlowDivider from '@/components/animations/EnergyFlowDivider';
 import ElectricProjectSlider from '@/components/animations/ElectricProjectSlider';
 import GridSimulator from '@/components/animations/GridSimulator';
-import DataCenterPowerShowcase from '@/components/common/DataCenterPowerShowcase';
+import ScrollVideoHero from '@/components/common/ScrollVideoHero';
+
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  location: string;
+  image: string;
+  description: string;
+  scope: string[];
+}
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const yHeroBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects = [
     {
@@ -104,65 +105,10 @@ export default function Home() {
   ];
 
   return (
-    <main ref={containerRef}>
+    <main>
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="hero">
-        <motion.div className="hero-bg" style={{ y: yHeroBg }}>
-          <img src="/hero.png" alt="High Voltage Infrastructure" />
-        </motion.div>
-        <div className="hero-overlay" />
-        <ElectricGrid />
-        
-        <div className="container relative z-10">
-          <motion.div className="hero-content" style={{ opacity: opacityHero }}>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              style={{ display: 'inline-block', padding: '8px 16px', background: 'rgba(240, 90, 0, 0.1)', border: '1px solid rgba(240, 90, 0, 0.3)', borderRadius: '100px', color: 'var(--color-primary)', fontWeight: '600', marginBottom: '24px', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.85rem' }}
-            >
-              Empowering Excellence Since 2009
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Architecting the Future of <br />
-              <span className="text-gradient-electric electric-glow-orange">Power Infrastructure</span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Delivering premium high voltage engineering solutions, testing and commissioning, and comprehensive power system studies.
-            </motion.p>
-            
-            <motion.div 
-              style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <motion.div className="magnetic-btn-wrap" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/contact" className="btn-primary">
-                  Start Your Project <ArrowRight size={20} />
-                </Link>
-              </motion.div>
-              <motion.div className="magnetic-btn-wrap" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/projects" className="btn-secondary">
-                  View Our Portfolio
-                </Link>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+
+      <ScrollVideoHero />
 
       {/* Marquee / Brands Strip */}
       <section style={{ padding: '40px 0', borderBottom: '1px solid var(--color-border)', borderTop: '1px solid var(--color-border)', background: 'rgba(255,255,255,0.01)', overflow: 'hidden' }}>
@@ -345,8 +291,6 @@ export default function Home() {
         </div>
       </section>
 
-      <DataCenterPowerShowcase />
-
       {/* Why Choose Spark / Core Pillars */}
       <section className="section">
         <div className="container">
@@ -372,7 +316,7 @@ export default function Home() {
                   { title: "Fully Compliant", desc: "Handed over with accurate and thorough performance reports." }
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: '16px' }}>
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(240, 90, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: 'var(--color-primary)', marginTop: '4px' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(226, 90, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: 'var(--color-primary)', marginTop: '4px' }}>
                       <CheckCircle size={16} />
                     </div>
                     <div>
@@ -457,7 +401,7 @@ export default function Home() {
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
                 style={{ padding: '40px', display: 'flex', flexDirection: 'column', position: 'relative' }}
               >
-                <span style={{ fontSize: '5rem', color: 'rgba(240, 90, 0, 0.1)', position: 'absolute', top: '10px', left: '20px', lineHeight: 1, fontFamily: 'serif', fontWeight: 'bold' }}>&ldquo;</span>
+                <span style={{ fontSize: '5rem', color: 'rgba(226, 90, 0, 0.1)', position: 'absolute', top: '10px', left: '20px', lineHeight: 1, fontFamily: 'serif', fontWeight: 'bold' }}>&ldquo;</span>
                 <p style={{ fontStyle: 'italic', marginBottom: '24px', position: 'relative', zIndex: 2, fontSize: '1.05rem', lineHeight: 1.7, flexGrow: 1 }}>
                   {test.text}
                 </p>
