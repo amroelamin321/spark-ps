@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spark Professional Services website
 
-## Getting Started
+Marketing site for Spark Professional Services (SPS), a high and low voltage electrical
+engineering company in Campbelltown NSW. Built with Next.js (App Router), React and plain CSS.
 
-First, run the development server:
+## Running locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build (all pages are statically generated)
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | File |
+| --- | --- |
+| Phone, email, address, LinkedIn, quote webhook URL | `src/data/site.ts` |
+| The 6 services (copy, scope lists, SEO titles, related projects) | `src/data/services.ts` |
+| Case studies | `src/data/projects.ts` |
+| Industries | `src/data/industries.ts` |
+| Testimonials and client logos | `src/data/testimonials.ts` |
+| Page titles, Open Graph and ElectricalContractor JSON-LD | `src/data/seo.ts` |
+| Styles (design tokens at the top) | `src/app/globals.css` |
+| Pages | `src/app/**/page.tsx` |
+| `sitemap.xml`, `robots.txt`, share image | `src/app/sitemap.ts`, `src/app/robots.ts`, `src/app/opengraph-image.tsx` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Service and project pages are generated from the data files, so adding a project is a matter of
+adding an entry to `src/data/projects.ts`.
 
-## Learn More
+## Adding the client's photos
 
-To learn more about Next.js, take a look at the following resources:
+Every image slot currently shows a labelled placeholder. To replace one:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Put the photo in `public/photos/` (e.g. `public/photos/data-centre-switchroom.jpg`).
+2. Set `src` on the matching `photo` entry in `src/data/services.ts` or `src/data/projects.ts`,
+   e.g. `photo: { alt: '...', src: '/photos/data-centre-switchroom.jpg' }`.
+3. Update the `alt` text to describe the actual photo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The home, About and Careers photos are set directly on the `<Photo>` component in those pages.
 
-## Deploy on Vercel
+## Content placeholders
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Missing client information is shown on the page as a yellow `[TODO: ...]` marker. Search the code
+for `Todo` to find them all. The full list for the client is in [`CLIENT-TODO.md`](CLIENT-TODO.md).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Quote form
+
+`src/components/QuoteForm.tsx` posts JSON to the n8n webhook in `src/data/site.ts`. It sends the
+new fields (`name`, `company`, `phone`, `email`, `service`, `siteLocation`, `message`) and also the
+field names the previous form used (`firstName`, `lastName`, `companyName`, `projectDetails`), so
+the existing n8n workflow keeps working until it is updated.
