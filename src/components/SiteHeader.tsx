@@ -49,8 +49,17 @@ export default function SiteHeader({ serviceLinks }: Props) {
       if (menuRef.current?.contains(document.activeElement)) toggleRef.current?.focus()
       setOpen(false)
     }
+    // Close after any link is chosen while the menu is open, including links to the current
+    // page that don't change the pathname (e.g. "Request a Quote" on /contact, or the logo on /).
+    const onClick = (e: MouseEvent) => {
+      if ((e.target as Element | null)?.closest?.('a')) setOpen(false)
+    }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    document.addEventListener('click', onClick)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.removeEventListener('click', onClick)
+    }
   }, [open])
 
   return (
@@ -147,10 +156,6 @@ export default function SiteHeader({ serviceLinks }: Props) {
           className="mobile-menu"
           hidden={!open}
           ref={menuRef}
-          // Close after any link is chosen, including links to the current page (e.g. /contact#quote).
-          onClick={(e) => {
-            if ((e.target as HTMLElement).closest('a')) setOpen(false)
-          }}
         >
           <nav className="container" aria-label="Mobile">
             <ul className="mobile-menu__list">

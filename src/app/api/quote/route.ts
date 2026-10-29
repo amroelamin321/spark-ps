@@ -36,19 +36,27 @@ function validateQuote(f: Fields) {
 }
 
 async function readBody(request: Request) {
-  const type = request.headers.get('content-type') ?? ''
+  const type = (request.headers.get('content-type') ?? '').toLowerCase()
   if (type.includes('application/json')) {
-    const json = (await request.json().catch(() => ({}))) as Record<string, unknown>
+    const parsed: unknown = await request.json().catch(() => null)
+    const json = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? (parsed as Record<string, unknown>) : {}
     return { isForm: false, get: (k: string) => (typeof json[k] === 'string' ? (json[k] as string) : '') }
   }
   const form = await request.formData().catch(() => new FormData())
-  return { isForm: true, get: (k: string) => String(form.get(k) ?? '') }
+  return {
+    isForm: true,
+    get: (k: string) => {
+      const v = form.get(k)
+      return typeof v === 'string' ? v : ''
+    },
+  }
 }
 
 export async function POST(request: Request) {
   const body = await readBody(request)
   const fields = Object.fromEntries(
-    (Object.keys(LIMITS) as Field[]).map((k) => [k, body.get(k).trim()]),
+    // Browsers send textarea line breaks as CRLF in form posts; count them as one character.
+    (Object.keys(LIMITS) as Field[]).map((k) => [k, body.get(k).replace(/\r\n/g, '\n').trim()]),
   ) as Fields
 
   // Plain HTML form posts (no JavaScript) get redirected to a result page.
