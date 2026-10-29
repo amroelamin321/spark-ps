@@ -28,7 +28,7 @@ Please also confirm we have permission to publish any site photos taken at clien
 
 ## Company details
 
-- [ ] **ABN** (footer, every page)
+- [ ] **ABN**: the footer now shows ABN 40 656 274 501. It is taken from your previous website and matches the ABN Lookup register (A.C.N. 656 274 501 Pty Ltd, business name Spark Professional Services, active). Please confirm this is the right entity to show.
 - [ ] **Office hours** (Contact page)
 - [ ] **24/7 emergency number**: do emergency HV switching calls go to 1300 425 498, or to a separate after-hours number?
 - [ ] **Service areas**: which states and regions do you cover? (About page; also added to Google structured data)
@@ -54,11 +54,15 @@ Please also confirm we have permission to publish any site photos taken at clien
 - [ ] **Client names**: can the end client be named on any project? (Currently anonymous, e.g. "a leading steel manufacturer".)
 - [ ] **More case studies**, especially for Mining, Water & Utilities, and Airports & Railways (location, scope and outcome).
 
+## Privacy and tracking
+
+- [ ] **Privacy policy text** (required before go-live): the new `/privacy-policy` page is a placeholder. The policy on your current WordPress site contains "Lorem Ipsum" filler text and an old Guildford address, so it was not copied. Please supply an approved policy. It should mention that quote requests are passed to your enquiry system (an n8n workflow) and any analytics or advertising tags you use.
+- [ ] **Google Ads**: your current site loads Google Ads tag AW-18411546389. Do you still use it? If yes, we will switch it on for the new site (and the new "thank you" page can be used as a conversion goal).
+
 ## Careers
 
 - [ ] **Current vacancies** (title, location, type), or the wording to show when there are none.
 
 ## Optional / recommended
 
-- [ ] **Privacy policy**: the quote form collects names, phone numbers and emails. A short privacy policy page is recommended.
 - [ ] **Exact map coordinates** for the office, to improve the Google listing data.

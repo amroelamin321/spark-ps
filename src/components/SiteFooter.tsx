@@ -4,7 +4,6 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { addressLine, site } from '@/data/site'
 import { services } from '@/data/services'
 import { LinkedInIcon } from './icons'
-import Todo from './Todo'
 
 const companyLinks = [
   { name: 'About', href: '/about' },
@@ -80,8 +79,9 @@ export default function SiteFooter() {
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>
-            ABN <Todo>client to confirm ABN</Todo>
+          <p className="site-footer__legal">
+            <span>ABN {site.abn}</span>
+            <Link href="/privacy-policy">Privacy policy</Link>
           </p>
         </div>
       </div>

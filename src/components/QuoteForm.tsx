@@ -1,18 +1,31 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Send } from 'lucide-react'
-import { QUOTE_WEBHOOK_URL, site } from '@/data/site'
+import { site } from '@/data/site'
 
 type Props = {
   services: { slug: string; name: string }[]
 }
 
-type Status = 'idle' | 'sending' | 'sent' | 'error'
+type Status = 'idle' | 'sending' | 'error'
+
+// Client-side checks mirror the server-side validation in app/api/quote/route.ts.
+function fieldError(name: string, value: string) {
+  const v = value.trim()
+  if (name === 'name' && !v) return 'Please enter your name.'
+  if (name === 'phone' && (v.match(/\d/g) ?? []).length < 8) return 'Please enter a phone number we can call.'
+  return ''
+}
 
 export default function QuoteForm({ services }: Props) {
+  const router = useRouter()
   const [status, setStatus] = useState<Status>('idle')
+  const [errorText, setErrorText] = useState('')
   const serviceRef = useRef<HTMLSelectElement>(null)
+  const alertRef = useRef<HTMLDivElement>(null)
 
   // Pre-select the service when arriving from a service page (/contact?service=slug).
   useEffect(() => {
@@ -22,92 +35,81 @@ export default function QuoteForm({ services }: Props) {
     }
   }, [services])
 
+  useEffect(() => {
+    if (status === 'error') alertRef.current?.focus()
+  }, [status])
+
+  function clearCustomError(e: React.FormEvent<HTMLFormElement>) {
+    const target = e.target as HTMLInputElement
+    if (target.setCustomValidity) target.setCustomValidity('')
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (status === 'sending') return
     const form = e.currentTarget
-    const data = new FormData(form)
-    const get = (key: string) => String(data.get(key) ?? '').trim()
 
-    const name = get('name')
-    const serviceSlug = get('service')
-    const serviceName = services.find((s) => s.slug === serviceSlug)?.name ?? 'Not sure / other'
-    const siteLocation = get('siteLocation')
-    const message = get('message')
-    const [firstName, ...rest] = name.split(/\s+/)
-
-    const payload = {
-      source: 'quote-form',
-      name,
-      company: get('company'),
-      phone: get('phone'),
-      email: get('email'),
-      service: serviceName,
-      siteLocation,
-      message,
-      // Field names used by the previous site's form, kept so the existing n8n workflow keeps working.
-      firstName,
-      lastName: rest.join(' '),
-      companyName: get('company'),
-      projectDetails: `Service: ${serviceName}\nSite location: ${siteLocation || '-'}\n\n${message}`,
+    // Native `required` accepts whitespace-only values, so check the trimmed values too.
+    for (const field of ['name', 'phone']) {
+      const input = form.elements.namedItem(field) as HTMLInputElement
+      input.setCustomValidity(fieldError(field, input.value))
     }
+    if (!form.reportValidity()) return
+
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>
 
     setStatus('sending')
     try {
-      const res = await fetch(QUOTE_WEBHOOK_URL, {
+      const res = await fetch(form.action, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data),
       })
-      if (!res.ok) throw new Error(`Request failed: ${res.status}`)
-      form.reset()
-      setStatus('sent')
+      const result = (await res.json().catch(() => ({}))) as { errors?: Record<string, string> }
+      if (res.ok) {
+        router.push('/contact/thank-you')
+        return
+      }
+      const messages = result.errors ? Object.values(result.errors) : []
+      setErrorText(messages.length ? messages.join(' ') : '')
+      setStatus('error')
     } catch (err) {
       console.error('Quote form submission failed', err)
+      setErrorText('')
       setStatus('error')
     }
   }
 
-  if (status === 'sent') {
-    return (
-      <div className="form-status form-status--success" role="status">
-        <p>
-          <strong>Thank you, your request has been sent.</strong> Our team will be in touch.
-        </p>
-        <p>
-          For urgent work, call <a href={site.phone.href}>{site.phone.display}</a>.
-        </p>
-      </div>
-    )
-  }
+  const sending = status === 'sending'
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" action="/api/quote" method="post" onSubmit={handleSubmit} onInput={clearCustomError}>
       <div className="field">
         <label htmlFor="qf-name">
           Name <span className="req" aria-hidden="true">*</span>
         </label>
-        <input id="qf-name" name="name" type="text" autoComplete="name" required />
+        <input id="qf-name" name="name" type="text" autoComplete="name" maxLength={200} required />
       </div>
 
       <div className="field">
         <label htmlFor="qf-company">
           Company <span className="optional">(optional)</span>
         </label>
-        <input id="qf-company" name="company" type="text" autoComplete="organization" />
+        <input id="qf-company" name="company" type="text" autoComplete="organization" maxLength={200} />
       </div>
 
       <div className="field">
         <label htmlFor="qf-phone">
           Phone <span className="req" aria-hidden="true">*</span>
         </label>
-        <input id="qf-phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" required />
+        <input id="qf-phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={40} required />
       </div>
 
       <div className="field">
         <label htmlFor="qf-email">
           Email <span className="req" aria-hidden="true">*</span>
         </label>
-        <input id="qf-email" name="email" type="email" autoComplete="email" required />
+        <input id="qf-email" name="email" type="email" autoComplete="email" maxLength={254} required />
       </div>
 
       <div className="field">
@@ -126,7 +128,13 @@ export default function QuoteForm({ services }: Props) {
         <label htmlFor="qf-location">
           Site location <span className="optional">(optional)</span>
         </label>
-        <input id="qf-location" name="siteLocation" type="text" placeholder="Suburb or town, state" />
+        <input
+          id="qf-location"
+          name="siteLocation"
+          type="text"
+          placeholder="Suburb or town, state"
+          maxLength={200}
+        />
       </div>
 
       <div className="field form__full">
@@ -137,24 +145,35 @@ export default function QuoteForm({ services }: Props) {
           id="qf-message"
           name="message"
           rows={5}
+          maxLength={5000}
           placeholder="Equipment, voltage, timing, shutdown windows or anything else we should know"
         />
       </div>
 
+      {/* Spam trap: hidden from people and assistive technology, filled in only by bots. */}
+      <div className="hp-field" aria-hidden="true">
+        <label htmlFor="qf-website">Leave this field empty</label>
+        <input id="qf-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="form__full">
         {status === 'error' && (
-          <div className="form-status form-status--error mb-16" role="alert">
-            Sorry, your request could not be sent. Please call{' '}
-            <a href={site.phone.href}>{site.phone.display}</a> or email{' '}
+          <div ref={alertRef} tabIndex={-1} className="form-status form-status--error mb-16" role="alert">
+            {errorText ? `${errorText} ` : 'Sorry, your request could not be sent. '}
+            Please call <a href={site.phone.href}>{site.phone.display}</a> or email{' '}
             <a href={`mailto:${site.email}`}>{site.email}</a>.
           </div>
         )}
-        <button className="btn btn--primary btn--block" type="submit" disabled={status === 'sending'}>
+        <button className="btn btn--primary btn--block" type="submit" aria-disabled={sending}>
           <Send size={18} aria-hidden="true" />
-          {status === 'sending' ? 'Sending…' : 'Send quote request'}
+          {sending ? 'Sending…' : 'Send quote request'}
         </button>
         <p className="form__note mt-12">
-          Fields marked <span className="req">*</span> are required. For 24/7 emergency HV switching, call{' '}
+          Fields marked <span className="req">*</span> are required. Your details are sent to {site.name} so we
+          can respond to your enquiry. See our <Link href="/privacy-policy">privacy policy</Link>.
+        </p>
+        <p className="form__note mt-12">
+          For 24/7 emergency HV switching, call{' '}
           <a href={site.emergencyPhone.href}>{site.emergencyPhone.display}</a> instead of using this form.
         </p>
       </div>

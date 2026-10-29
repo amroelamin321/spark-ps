@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -36,9 +37,15 @@ export const viewport: Viewport = {
 
 const serviceLinks = services.map((s) => ({ name: s.name, href: `/services/${s.slug}` }))
 
+// Optional Google Ads tag (the previous WordPress site used AW-18411546389). Off unless
+// NEXT_PUBLIC_GOOGLE_ADS_ID is set in the Vercel project, so nothing is tracked without the client's decision.
+const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={inter.variable}>
+    // data-scroll-behavior lets Next.js turn off smooth scrolling during page navigations (Next 16),
+    // so smooth scrolling only applies to in-page links such as #quote.
+    <html lang="en-AU" className={inter.variable} data-scroll-behavior="smooth">
       <body>
         <SiteHeader serviceLinks={serviceLinks} />
         <main id="main" className="fade-in">
@@ -46,6 +53,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <SiteFooter />
         <JsonLd data={organizationJsonLd()} />
+        {googleAdsId && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`} strategy="afterInteractive" />
+            <Script id="google-ads" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',${JSON.stringify(googleAdsId)});`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   )

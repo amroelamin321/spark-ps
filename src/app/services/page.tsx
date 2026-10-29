@@ -4,6 +4,7 @@ import { services } from '@/data/services'
 import { pageMetadata } from '@/data/seo'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import CtaBand from '@/components/CtaBand'
+import Todo from '@/components/Todo'
 import { site } from '@/data/site'
 
 export const metadata = pageMetadata({
@@ -60,6 +61,9 @@ export default function ServicesPage() {
                           <li key={item}>{item}</li>
                         ))}
                       </ul>
+                      <p className="mt-12">
+                        <Todo>client to confirm scope</Todo>
+                      </p>
                     </div>
                   </div>
                 </li>

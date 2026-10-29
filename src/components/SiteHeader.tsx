@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -21,14 +21,19 @@ type Props = {
   serviceLinks: { name: string; href: string }[]
 }
 
-function isActive(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(`${href}/`)
+// "page" for the current page, "true" for the section a sub-page belongs to.
+function currentState(pathname: string, href: string) {
+  if (pathname === href) return 'page' as const
+  if (pathname.startsWith(`${href}/`)) return 'true' as const
+  return undefined
 }
 
 export default function SiteHeader({ serviceLinks }: Props) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [prevPathname, setPrevPathname] = useState(pathname)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   // Close the mobile menu after navigating (state adjusted during render, not in an effect).
   if (pathname !== prevPathname) {
@@ -39,7 +44,10 @@ export default function SiteHeader({ serviceLinks }: Props) {
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key !== 'Escape') return
+      // Return focus to the toggle so keyboard users don't lose their place.
+      if (menuRef.current?.contains(document.activeElement)) toggleRef.current?.focus()
+      setOpen(false)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -51,7 +59,7 @@ export default function SiteHeader({ serviceLinks }: Props) {
         Skip to main content
       </a>
 
-      <div className="topbar">
+      <div className="topbar" role="region" aria-label="Contact Spark Professional Services">
         <div className="container topbar__inner">
           {/* Mobile and tablet: phone and quote always visible */}
           <a className="topbar__phone topbar__mobile" href={site.phone.href}>
@@ -102,7 +110,7 @@ export default function SiteHeader({ serviceLinks }: Props) {
                   <Link
                     href={link.href}
                     className="nav-link"
-                    aria-current={isActive(pathname, link.href) ? 'page' : undefined}
+                    aria-current={currentState(pathname, link.href)}
                   >
                     {link.name}
                   </Link>
@@ -124,6 +132,7 @@ export default function SiteHeader({ serviceLinks }: Props) {
           <button
             type="button"
             className="menu-toggle"
+            ref={toggleRef}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
@@ -133,7 +142,16 @@ export default function SiteHeader({ serviceLinks }: Props) {
           </button>
         </div>
 
-        <div id="mobile-menu" className="mobile-menu" hidden={!open}>
+        <div
+          id="mobile-menu"
+          className="mobile-menu"
+          hidden={!open}
+          ref={menuRef}
+          // Close after any link is chosen, including links to the current page (e.g. /contact#quote).
+          onClick={(e) => {
+            if ((e.target as HTMLElement).closest('a')) setOpen(false)
+          }}
+        >
           <nav className="container" aria-label="Mobile">
             <ul className="mobile-menu__list">
               <li>

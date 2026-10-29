@@ -25,13 +25,12 @@ export const site = {
     countryCode: 'AU',
   },
   linkedin: 'https://www.linkedin.com/company/spark-professional-services-sps/',
+  // From the ABN Lookup register (active, business name "Spark Professional Services")
+  // and the client's previous website.
+  abn: '40 656 274 501',
   yearsExperience: 15,
 } as const
 
 export const addressLine = `${site.address.street}, ${site.address.locality} ${site.address.region} ${site.address.postcode}`
 
 export const mapsQuery = encodeURIComponent(`${addressLine}, ${site.address.country}`)
-
-// Quote form submissions are posted here (same n8n webhook as the previous site).
-export const QUOTE_WEBHOOK_URL =
-  'https://vertx-n8n-host102938.up.railway.app/webhook/0db02aed-fcd9-43d3-ab01-bd41cfd50bbb'
