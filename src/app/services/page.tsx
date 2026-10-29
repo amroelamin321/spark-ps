@@ -1,110 +1,79 @@
-'use client';
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { services } from '@/data/services'
+import { pageMetadata } from '@/data/seo'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import CtaBand from '@/components/CtaBand'
+import Todo from '@/components/Todo'
+import { site } from '@/data/site'
 
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import ChatWidget from '@/components/chat/ChatWidget';
-import { motion } from 'framer-motion';
-import { Zap, Shield, Activity, Settings, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+export const metadata = pageMetadata({
+  title: 'High Voltage Electrical Services | NSW & Australia',
+  description:
+    'HV testing and commissioning, high voltage design, 24/7 HV switching, maintenance and support, earth testing and thermographic imaging from Spark Professional Services.',
+  path: '/services',
+})
 
-export default function Services() {
-  const services = [
-    {
-      icon: Zap,
-      title: "Testing and Commissioning Service",
-      desc: "SPS offers comprehensive commissioning and validation for all electrical systems. We conduct rigorous testing and adjustments on equipment ranging from power transformers to protection relays. Each project is accompanied by a detailed report certifying system performance, integrity, and compliance with electrical and safety standards.",
-      features: ["Relay Testing", "Transformer Validation", "Detailed Reports"]
-    },
-    {
-      icon: Settings,
-      title: "High Voltage Design",
-      desc: "We are at the forefront of high-voltage design, offering unparalleled expertise in creating powerful, future-ready electrical infrastructure. Our team of seasoned engineers combines decades of experience with cutting-edge technology to deliver innovative solutions.",
-      features: ["Primary Substation Layout", "Secondary Systems", "IEC/IEEE Compliance"]
-    },
-    {
-      icon: Shield,
-      title: "High Voltage Switching Services",
-      desc: "We offer safe and controlled high-voltage switch operations, performed by highly trained professionals with a strict zero-incident safety record. We handle network validations and operations across critical infrastructure safely.",
-      features: ["Safe Operations", "Zero Incidents", "24/7 Availability"]
-    },
-    {
-      icon: Activity,
-      title: "Maintenance and Support",
-      desc: "We understand how crucial it is to keep your electrical systems running smoothly. That's why we provide thorough maintenance and support tailored to your needs, ensuring maximum uptime and reliability.",
-      features: ["Preventative Maintenance", "24/7 Support", "Troubleshooting"]
-    },
-    {
-      icon: Zap,
-      title: "Earth Testing",
-      desc: "A compliant earth system in high voltage distribution is essential for safe operation. We go beyond basic 'in service' resistance measurements to deliver comprehensive earthing system evaluations.",
-      features: ["Soil Resistivity", "Step & Touch Potential", "Compliance Verification"]
-    },
-    {
-      icon: Activity,
-      title: "Thermographic Imaging",
-      desc: "Infra-red or thermographic imaging allows us to scan for excess heat from electrical switchgear and cabling. Thermal images provide an instant indication of all manner of potential problems in connectors, switches and fuses.",
-      features: ["Infra-red Scanning", "Fault Detection", "Preventative Diagnostics"]
-    }
-  ];
-
+export default function ServicesPage() {
   return (
-    <main>
-      <Navbar />
-      
-      <header className="page-header">
+    <>
+      <section className="page-hero">
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="breadcrumb">OUR EXPERTISE</span>
-            <h1 className="page-title">Engineering Services</h1>
-            <p style={{ fontSize: '1.2rem', maxWidth: '600px' }}>
-              From initial feasibility studies to final commissioning, our holistic approach guarantees exceptional results across the power infrastructure lifecycle.
+          <Breadcrumbs items={[{ name: 'Services', href: '/services' }]} />
+          <div className="page-hero__content">
+            <h1>High voltage electrical services</h1>
+            <p className="lead">
+              SPS covers the full life of your high and low voltage assets: design, testing and
+              commissioning, switching, and ongoing maintenance and diagnostics. Not sure which
+              service you need? Call{' '}
+              <a href={site.phone.href}>{site.phone.display}</a> and talk to an engineer.
             </p>
-          </motion.div>
-        </div>
-      </header>
-
-      <section className="section" style={{ background: 'var(--color-bg-elevated)' }}>
-        <div className="container">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-            {services.map((service, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="glass-panel"
-                style={{ padding: '64px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px', alignItems: 'center' }}
-              >
-                <div>
-                  <div style={{ width: '80px', height: '80px', background: 'var(--color-primary-glow)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', marginBottom: '32px' }}>
-                    <service.icon size={40} />
-                  </div>
-                  <h2 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>{service.title}</h2>
-                  <Link href="/contact" style={{ color: 'var(--color-primary)', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    Request Service <ArrowRight size={18} />
-                  </Link>
-                </div>
-                
-                <div>
-                  <p style={{ fontSize: '1.2rem', marginBottom: '32px', color: 'var(--color-text-main)' }}>
-                    {service.desc}
-                  </p>
-                  <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                    {service.features.map((feat, i) => (
-                      <span key={i} style={{ padding: '8px 16px', background: 'var(--color-bg-base)', border: '1px solid var(--color-border)', borderRadius: '100px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
-                        {feat}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
 
-      <Footer />
-      <ChatWidget />
-    </main>
-  );
+      <section className="section">
+        <div className="container">
+          <ul className="stack-lg">
+            {services.map((s) => {
+              const Icon = s.icon
+              return (
+                <li key={s.slug} className="panel">
+                  <div className="split split--wide-left">
+                    <div className="stack">
+                      <span className="card__icon">
+                        <Icon size={22} aria-hidden="true" />
+                      </span>
+                      <h2 className="h-md">
+                        <Link className="title-link" href={`/services/${s.slug}`}>
+                          {s.name}
+                        </Link>
+                      </h2>
+                      <p>{s.intro[0]}</p>
+                      <Link className="text-link" href={`/services/${s.slug}`}>
+                        {s.name} details <ArrowRight size={16} aria-hidden="true" />
+                      </Link>
+                    </div>
+                    <div>
+                      <h3 className="eyebrow mb-12">Typical scope</h3>
+                      <ul className="bullet-list">
+                        {s.included.slice(0, 4).map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                      <p className="mt-12">
+                        <Todo>client to confirm scope</Todo>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </section>
+
+      <CtaBand title="Need a quote for HV work?" />
+    </>
+  )
 }

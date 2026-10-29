@@ -1,208 +1,66 @@
 # Design System Master File
 
-> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
-> If that file exists, its rules **override** this Master file.
-> If not, strictly follow the rules below.
+**Project:** Spark PS (B2B redesign)
+**Category:** B2B engineering services
+**Source of truth for tokens:** `src/app/globals.css` (`:root`)
+
+The site should read as a serious engineering firm: clean, corporate and trustworthy. Every page
+answers three questions: what SPS does, why they can be trusted, and how to contact them.
 
 ---
 
-**Project:** Spark PS
-**Generated:** 2026-06-23 06:12:01
-**Category:** B2B Service
+## Colour
 
----
+Brand colours come from the logo (charcoal wordmark + orange `#F05A00`), paired with navy.
 
-## Global Rules
+| Role | Hex | Token | Notes |
+| --- | --- | --- | --- |
+| Navy (dark bands, top bar, footer) | `#0F1B2D` | `--navy` | |
+| Navy 700 (CTA band, hover) | `#1C2B40` | `--navy-700` | |
+| Headings | `#0F1B2D` | `--ink` | |
+| Body text | `#1F2937` | `--text` | |
+| Muted text | `#4B5563` | `--muted` | 7.5:1 on white |
+| Brand orange | `#F05A00` | `--accent` | Icons, rules, accents on navy. Not for small text on white (3.4:1). |
+| Button orange | `#C84B00` | `--accent-strong` | White text 4.7:1 (AA) |
+| Orange text | `#B33F00` | `--accent-text` | Links/eyebrows on white and light grey (5.3:1+) |
+| Light section background | `#F4F6F8` | `--bg-alt` | |
+| Borders | `#E2E6EB` / `#7B8794` | `--border` / `--border-strong` | Form fields use the strong border (3:1) |
 
-### Color Palette
+No gradients, glows or glass effects.
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#0F172A` | `--color-primary` |
-| On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#334155` | `--color-secondary` |
-| Accent/CTA | `#E25A00` | `--color-accent` |
-| Background | `#F8FAFC` | `--color-background` |
-| Foreground | `#020617` | `--color-foreground` |
-| Muted | `#E8ECF1` | `--color-muted` |
-| Border | `#E2E8F0` | `--color-border` |
-| Destructive | `#DC2626` | `--color-destructive` |
-| Ring | `#0F172A` | `--color-ring` |
+## Typography
 
-**Color Notes:** Professional navy + Spark orange CTA (#E25A00) matching logo identity.
+- One font: **Inter** (via `next/font/google`, self-hosted at build time).
+- H1 `clamp(2rem → 3rem)`, H2 `clamp(1.625rem → 2.25rem)`, H3 `1.1875rem`, body `1rem / 1.6`.
+- Exactly one H1 per page; headings do not skip levels.
 
-### Typography
+## Layout
 
-- **Heading Font:** Plus Jakarta Sans
-- **Body Font:** Plus Jakarta Sans
-- **Mood:** enterprise, saas, b2b, professional, indigo, modern, approachable, legible, ios dynamic type, android scaling
-- **Google Fonts:** [Plus Jakarta Sans + Plus Jakarta Sans](https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400)
+- Mobile-first. Breakpoints: 640px (2-column grids), 900px (split layouts), 1080px (desktop nav).
+- Container 1200px, 20px gutter on mobile, 32px from 768px.
+- Section padding 56px mobile, 80px tablet, 96px desktop.
 
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
-```
+## Header & calls to action
 
-### Spacing Variables
+- Mobile/tablet: a sticky navy top bar with click-to-call `1300 425 498` and **Request a Quote**; logo + Menu button below.
+- Desktop (1080px+): sticky white bar with nav, phone number and **Request a Quote**.
+- Every page ends with the navy CTA band (Request a Quote + Call).
+- The **24/7 Emergency HV Switching** button (`EmergencyButton`) appears on Home, the HV Switching page and Contact.
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
+## Components
 
-### Shadow Depths
+`Photo` (labelled placeholder until a real photo is supplied), `Todo` / `TodoBlock` (visible
+content placeholders), cards (`ServiceCard`, `ProjectCard`, `IndustryTile`), `TestimonialGrid`,
+`ClientLogos`, `CtaBand`, `Breadcrumbs` (with BreadcrumbList JSON-LD), `QuoteForm`.
 
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+## Motion
 
----
+- A single 0.4s opacity fade-in on page content, inside `@media (prefers-reduced-motion: no-preference)`.
+- Hover transitions 150ms on colour/border only. No transforms, parallax, particles, scroll effects or custom cursors.
 
-## Component Specs
+## Rules
 
-### Buttons
-
-```css
-/* Primary Button */
-.btn-primary {
-  background: #E25A00;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #0F172A;
-  border: 2px solid #0F172A;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-```
-
-### Cards
-
-```css
-.card {
-  background: #F8FAFC;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #0F172A;
-  outline: none;
-  box-shadow: 0 0 0 3px #0F172A20;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
-
----
-
-## Style Guidelines
-
-**Style:** Trust & Authority
-
-**Keywords:** Certificates/badges displayed, expert credentials, case studies with metrics, before/after comparisons, industry recognition, security badges
-
-**Best For:** Healthcare/medical landing pages, financial services, enterprise software, premium/luxury products, legal services
-
-**Key Effects:** Badge hover effects, metric pulse animations, certificate carousel, smooth stat reveal
-
-### Page Pattern
-
-**Pattern Name:** Feature-Rich Showcase + Trust
-
-- **CTA Placement:** Above fold
-- **Section Order:** Hero > Features > CTA
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Playful design
-- ❌ Hidden credentials
-- ❌ AI purple/pink gradients
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- No invented facts: no statistics, certifications, client names or service areas unless the client has supplied them. Use `<Todo>` instead.
+- No stock or AI imagery presented as SPS work. Use `<Photo>` placeholders until the client supplies photos.
+- Social links: LinkedIn only.
+- Visible focus states (3px orange outline), 44px+ touch targets, 16px form inputs (no iOS zoom).

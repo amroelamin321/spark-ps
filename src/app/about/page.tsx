@@ -1,142 +1,143 @@
-'use client';
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { addressLine, site } from '@/data/site'
+import { pageMetadata } from '@/data/seo'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import CtaBand from '@/components/CtaBand'
+import Photo from '@/components/Photo'
+import Todo, { TodoBlock } from '@/components/Todo'
+import { ClientLogos } from '@/components/Testimonials'
 
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import ChatWidget from '@/components/chat/ChatWidget';
-import { motion } from 'framer-motion';
-import { CheckCircle, Award, Target, Users, ShieldCheck, Gauge, FileCheck } from 'lucide-react';
+export const metadata = pageMetadata({
+  title: 'About Us | Electrical Engineers in Campbelltown NSW',
+  description:
+    'Spark Professional Services is a high and low voltage electrical engineering company in Campbelltown NSW with 15 years of experience and a team of expert engineers.',
+  path: '/about',
+})
 
-export default function About() {
-  const stats = [
-    { value: '15+', label: 'Years Experience' },
-    { value: '200+', label: 'Projects Completed' },
-    { value: '50+', label: 'Expert Engineers' },
-    { value: '100%', label: 'Safety Record' },
-  ];
+const approach = [
+  {
+    title: 'Consultation',
+    text: 'We start by understanding your site, your equipment and what you need to achieve, including constraints such as shutdown windows and site access.',
+  },
+  {
+    title: 'Custom design',
+    text: 'We develop a solution for your specific site and requirements rather than an off-the-shelf package.',
+  },
+  {
+    title: 'Implementation & testing',
+    text: 'We carry out the work, then test and commission systems before handover, with documentation for your records.',
+  },
+  {
+    title: 'Ongoing support',
+    text: 'After handover we stay available for maintenance, switching and support as your site’s needs change.',
+  },
+]
 
-  const pillars = [
-    { icon: ShieldCheck, title: 'Safety First', desc: 'A strict zero incident policy on every active switching operation, from site arrival to sign-off.' },
-    { icon: Gauge, title: 'Expert Engineering', desc: 'Decades of combined engineering experience across complex HV grids, switchgear, and protection systems.' },
-    { icon: FileCheck, title: 'Fully Compliant', desc: 'Every project handed over with accurate, thorough performance and compliance documentation.' },
-  ];
-
+export default function AboutPage() {
   return (
-    <main>
-      <Navbar />
-
-      <header className="page-header">
+    <>
+      <section className="page-hero">
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="breadcrumb">COMPANY</span>
-            <h1 className="page-title">About Spark PS</h1>
-            <p style={{ fontSize: '1.2rem', maxWidth: '600px' }}>
-              We don&apos;t just design power systems; we architect the future of energy infrastructure with uncompromising precision.
-            </p>
-          </motion.div>
-        </div>
-      </header>
-
-      <section className="section">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '80px', alignItems: 'center' }}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="glass-panel"
-            style={{ padding: '0', border: 'none', background: 'transparent' }}
-          >
-            <img src="/about-image.png" alt="Engineering Team" style={{ width: '100%', display: 'block', borderRadius: '16px' }} />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="breadcrumb">Our Story</span>
-            <h2 style={{ fontSize: '3rem', marginBottom: '24px' }}>A Legacy of <br /><span className="text-gradient-primary">Trust & Authority</span></h2>
-            <p style={{ fontSize: '1.1rem', marginBottom: '24px' }}>
-              Founded in 2009, Spark Professional Services has grown to become a premier electrical engineering firm. We specialize in high voltage solutions that power communities, industries, and critical infrastructure.
-            </p>
-            <p style={{ fontSize: '1.1rem', marginBottom: '40px' }}>
-              Our team consists of industry veterans and forward-thinking innovators dedicated to safety, sustainability, and technological advancement.
-            </p>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-              {[
-                { icon: Award, text: 'Award-Winning Designs' },
-                { icon: Target, text: 'Precision Engineering' },
-                { icon: Users, text: 'Top-Tier Talent' },
-                { icon: CheckCircle, text: '100% Compliance' },
-              ].map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-primary-glow)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
-                    <item.icon size={24} />
-                  </div>
-                  <span style={{ fontWeight: '600', color: 'var(--color-text-main)' }}>{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stats band */}
-      <section className="section" style={{ background: '#FAFAFA', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '40px' }}>
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6, type: 'spring' }}
-              style={{ textAlign: 'center' }}
-            >
-              <h3 style={{ fontSize: '3.5rem', color: 'var(--color-primary)', lineHeight: 1, marginBottom: '8px' }}>{stat.value}</h3>
-              <p style={{ fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Values / Pillars */}
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 64px' }}>
-            <span className="breadcrumb">What Drives Us</span>
-            <h2 style={{ fontSize: 'clamp(2.25rem, 3.6vw, 3rem)', marginBottom: '16px' }}>
-              Uncompromising <span className="text-gradient-primary">Safety & Quality</span>
-            </h2>
-            <p style={{ fontSize: '1.15rem' }}>
-              A client-centric, precision-first approach to every electrical layout, protection relay programme, and grid validation we deliver.
+          <Breadcrumbs items={[{ name: 'About', href: '/about' }]} />
+          <div className="page-hero__content">
+            <h1>About {site.name}</h1>
+            <p className="lead">
+              A high and low voltage electrical engineering company based in{' '}
+              {site.address.locality}, {site.address.region}, with {site.yearsExperience} years of
+              experience and a team of expert engineers.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
-            {pillars.map((pillar, i) => (
-              <motion.div
-                key={i}
-                className="glass-panel"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.6 }}
-                style={{ padding: '40px' }}
-              >
-                <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'var(--color-primary-glow)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', marginBottom: '24px' }}>
-                  <pillar.icon size={28} />
-                </div>
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '12px', color: 'var(--color-text-main)' }}>{pillar.title}</h3>
-                <p>{pillar.desc}</p>
-              </motion.div>
+      <section className="section">
+        <div className="container split split--center">
+          <div className="prose stack">
+            <span className="eyebrow">Who we are</span>
+            <h2>Engineering-led, from design to ongoing support</h2>
+            <p>
+              {site.name} (SPS) provides high and low voltage electrical engineering and design,
+              testing and commissioning, HV switching, maintenance, earth testing and
+              thermographic imaging.
+            </p>
+            <p>
+              Our team of expert engineers brings {site.yearsExperience} years of experience to
+              power systems for data centres, heavy industry, energy and infrastructure. We cover
+              every stage, so your systems run safely, reliably and in line with the standards
+              that apply to your site.
+            </p>
+            <blockquote className="pull-quote">
+              <p>
+                “SPS is committed to providing quality electrical engineering services to enhance
+                the communities where our clients live and work.”
+              </p>
+            </blockquote>
+          </div>
+          <Photo alt="The SPS engineering team at the Campbelltown office or on site" />
+        </div>
+      </section>
+
+      <section className="section section--alt" aria-labelledby="approach-heading">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Our approach</span>
+            <h2 id="approach-heading">How we work</h2>
+            <p className="lead">The same four steps on every project, large or small.</p>
+          </div>
+          <ol className="steps">
+            {approach.map((step) => (
+              <li key={step.title}>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="credentials-heading">
+        <div className="container split">
+          <div className="stack">
+            <span className="eyebrow">Credentials</span>
+            <h2 id="credentials-heading">Accreditations, safety and insurance</h2>
+            <TodoBlock>
+              Client to confirm certifications, accreditations, licences, HV authorisations,
+              insurances and safety systems to list here. Do not publish until confirmed.
+            </TodoBlock>
+          </div>
+          <div className="stack">
+            <span className="eyebrow">Our team</span>
+            <h2>Expert engineers</h2>
+            <TodoBlock>
+              Client to supply key team members (names, roles, qualifications) and team photos, if
+              they would like them shown.
+            </TodoBlock>
           </div>
         </div>
       </section>
 
-      <Footer />
-      <ChatWidget />
-    </main>
-  );
+      <section className="section section--alt" aria-labelledby="location-heading">
+        <div className="container split split--center">
+          <div className="stack">
+            <span className="eyebrow">Where we are</span>
+            <h2 id="location-heading">Based in Campbelltown, NSW</h2>
+            <p>
+              Our office is at {addressLine}. Our featured projects include work in NSW, Victoria
+              and the Northern Territory.
+            </p>
+            <p>
+              Service areas: <Todo>client to confirm service areas</Todo>
+            </p>
+            <Link className="text-link" href="/contact">
+              Contact details and map <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <ClientLogos />
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
+  )
 }
