@@ -55,7 +55,12 @@ export default function HomePage() {
               </li>
             </ul>
           </div>
-          <Photo alt="SPS engineers working on HV switchgear in a switchroom" ratio="4 / 3" eager />
+          <Photo
+            alt="SPS technicians working on switchgear protection relays"
+            src="/photos/crew-switchgear-protection-relays.jpg"
+            ratio="4 / 3"
+            eager
+          />
         </div>
       </section>
 

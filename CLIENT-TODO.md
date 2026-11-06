@@ -3,28 +3,37 @@
 Everything below shows on the site as a clearly marked `[TODO]` placeholder (or is a question
 behind existing content). Nothing here has been made up; these are the gaps.
 
-## Photos (13 placeholders)
+## Photos
 
-Please supply your own photos (landscape, at least 1600px wide). Stock images should not be
-used for anything presented as SPS work.
+The site now uses the site photos from your current WordPress website (in `public/photos/`). Stock
+and library images from that site were left out: the engineers at a pylon at sunset, the
+circuit-breaker close-ups, the steel-mill interiors, the models at panels, and similar. Three photos
+of Omicron test gear were also left out because they look like a supplier's photos from overseas
+jobs (a Spanish "ALTA TENSION" sign, a French company sticker on the laptop, and a tropical
+substation). All location data (GPS) was removed from the photo files.
 
-| Where | Photo needed |
-| --- | --- |
-| Home (hero) | SPS engineers working on HV switchgear in a switchroom |
-| About | The SPS engineering team, at the office or on site |
-| Careers | SPS engineers working together on site |
-| Testing & Commissioning | Engineer testing protection relays inside an HV switchroom |
-| High Voltage Design | Engineer reviewing HV single-line diagrams and design drawings |
-| HV Switching Services | Switching operator in arc-rated PPE operating HV switchgear |
-| Maintenance & Support | Technicians carrying out maintenance on an HV switchboard |
-| Earth Testing | Engineer carrying out earth testing at an outdoor substation |
-| Thermographic Imaging | Thermal image of switchgear connections from an SPS scan |
-| Project: Premier Data Centre, Melbourne | Switchroom / switchgear on that project |
-| Project: LNG facility, Darwin | Protection relay panel from the retrofit |
-| Project: Steel manufacturer, Port Kembla | The 35-panel 6.6kV switchboard |
-| Project: Off-grid poultry farm, Griffith | Overhead 11kV lines / substation on site |
+| Where | Photo used | Please confirm |
+| --- | --- | --- |
+| Home (hero) | Crew working on switchgear protection relays (SPS labels on panels) | |
+| About | Worker standing in a large tunnel | Which job is this? |
+| Careers | Outdoor substation (from your current careers page) | Is this an SPS job photo? It has no identifying details. |
+| Testing & Commissioning | Technician running HV tests beside switchgear outdoors | |
+| High Voltage Design | Aerial view of the Griffith site | A design-related photo would fit better (drawings, a substation you designed) |
+| HV Switching Services | Technician at ABB switchgear with danger tags | |
+| Maintenance & Support | Switchgear line-up with protection relays | |
+| Earth Testing | Test leads clamped to cables at an open trench | An actual earth test photo (stakes, earth grid) would fit better |
+| Thermographic Imaging | Line-up of numbered switchboard panels | A real thermal image from one of your scans would fit much better |
+| Project: Premier Data Centre | Switchgear line-up with protection relays | These four follow the photos your current site uses for each project |
+| Project: LNG facility, Darwin | Technician at ABB switchgear | |
+| Project: Port Kembla | Line-up of numbered switchboard panels | |
+| Project: Griffith | Aerial drone view of the site | |
 
-Please also confirm we have permission to publish any site photos taken at client facilities.
+- [ ] **Higher-resolution originals**: most of these were exported from your old site at about
+  500 to 600px wide, so they look soft on large screens. Please send the original photos.
+- [ ] **More photos**: your team, office, and work on each service, ideally landscape and at least
+  1600px wide.
+- [ ] **Permission**: confirm we may publish photos taken at client facilities (the steel
+  manufacturer, the data centre, the LNG facility).
 
 ## Company details
 

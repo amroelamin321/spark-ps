@@ -68,7 +68,7 @@ export default function CareersPage() {
               </p>
             </div>
           </div>
-          <Photo alt="SPS engineers working together on site" />
+          <Photo alt="Outdoor high voltage substation under a blue sky" src="/photos/outdoor-substation.jpg" />
         </div>
       </section>
 

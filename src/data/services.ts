@@ -54,7 +54,7 @@ export const services: Service[] = [
       'Detailed test reports and handover documentation',
     ],
     relatedProjects: ['premier-data-centre-melbourne', 'lng-facility-protection-relay-retrofit-darwin'],
-    photo: { alt: 'SPS engineer testing protection relays inside an HV switchroom' },
+    photo: { alt: 'Technician running high voltage tests beside switchgear at an outdoor site', src: '/photos/outdoor-hv-testing.jpg' },
   },
   {
     slug: 'high-voltage-design',
@@ -82,7 +82,7 @@ export const services: Service[] = [
       'Design documentation and drawings',
     ],
     relatedProjects: [],
-    photo: { alt: 'SPS engineer reviewing HV single-line diagrams and design drawings' },
+    photo: { alt: 'Aerial view of an HV site with substations and battery enclosures on red soil', src: '/photos/griffith-site-aerial.jpg' },
   },
   {
     slug: 'high-voltage-switching',
@@ -110,7 +110,7 @@ export const services: Service[] = [
       'Restoration of supply after work',
     ],
     relatedProjects: [],
-    photo: { alt: 'SPS switching operator in arc-rated PPE operating HV switchgear' },
+    photo: { alt: 'Technician in hi-vis at HV switchgear with danger tags in a switchroom', src: '/photos/technician-abb-switchgear.jpg' },
     emergency: true,
   },
   {
@@ -139,7 +139,7 @@ export const services: Service[] = [
       'Maintenance reports and recommendations',
     ],
     relatedProjects: [],
-    photo: { alt: 'SPS technicians carrying out maintenance on an HV switchboard' },
+    photo: { alt: 'Switchgear line-up with protection relays in a switchroom', src: '/photos/switchgear-protection-relays.jpg' },
   },
   {
     slug: 'earth-testing',
@@ -167,7 +167,7 @@ export const services: Service[] = [
       'Compliance verification and reporting',
     ],
     relatedProjects: ['off-grid-poultry-farm-griffith'],
-    photo: { alt: 'SPS engineer carrying out earth testing at an outdoor substation' },
+    photo: { alt: 'Test leads clamped to cable cores at an open trench during on-site testing', src: '/photos/test-leads-trench.jpg' },
   },
   {
     slug: 'thermographic-imaging',
@@ -194,7 +194,7 @@ export const services: Service[] = [
       'Thermal images with findings and recommendations',
     ],
     relatedProjects: [],
-    photo: { alt: 'Thermal image of switchgear connections taken by SPS during a scan' },
+    photo: { alt: 'Line-up of numbered HV switchboard panels in a switchroom', src: '/photos/switchboard-lineup.jpg' },
   },
 ]
 

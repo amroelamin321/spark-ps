@@ -74,7 +74,7 @@ export default function AboutPage() {
               </p>
             </blockquote>
           </div>
-          <Photo alt="The SPS engineering team at the Campbelltown office or on site" />
+          <Photo alt="Worker in hi-vis and hard hat standing in a large tunnel on site" src="/photos/engineer-in-tunnel.jpg" />
         </div>
       </section>
 

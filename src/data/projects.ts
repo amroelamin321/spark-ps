@@ -38,7 +38,7 @@ export const projects: Project[] = [
       'Switchgear and protection systems commissioned for the data centre, with client documentation managed throughout.',
     metaDescription:
       'Case study: SPS commissioned 30 switchgears with Schneider and SEL protection relays, VTs, CTs and battery systems at a premier data centre in Melbourne, VIC.',
-    photo: { alt: 'Data centre switchroom in Melbourne commissioned by SPS' },
+    photo: { alt: 'Switchgear line-up with protection relays in the data centre switchroom', src: '/photos/switchgear-protection-relays.jpg' },
   },
   {
     slug: 'lng-facility-protection-relay-retrofit-darwin',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
       'Outdated protection relays replaced with modern systems and integrated into the facility’s network.',
     metaDescription:
       'Case study: SPS replaced, programmed, tested and commissioned protection relays during a critical retrofit at a major LNG facility in Darwin, NT.',
-    photo: { alt: 'Protection relay panel at the Darwin LNG facility retrofit' },
+    photo: { alt: 'Technician in hi-vis at ABB switchgear during the LNG facility retrofit', src: '/photos/technician-abb-switchgear.jpg' },
   },
   {
     slug: 'steel-manufacturer-hv-switchboard-upgrade-port-kembla',
@@ -81,7 +81,7 @@ export const projects: Project[] = [
       'Early-1990s switchgear replaced with a new 35-panel 6.6kV switchboard, reducing manual handling risks and improving reliability.',
     metaDescription:
       'Case study: SPS tested and commissioned a 35-panel 6.6kV switchboard replacing early-1990s Westinghouse switchgear for a leading steel manufacturer at Port Kembla, NSW.',
-    photo: { alt: '35-panel 6.6kV switchboard at the Port Kembla steelworks' },
+    photo: { alt: 'Line-up of numbered 6.6kV switchboard panels at Port Kembla', src: '/photos/switchboard-lineup.jpg' },
   },
   {
     slug: 'off-grid-poultry-farm-griffith',
@@ -105,7 +105,7 @@ export const projects: Project[] = [
       'The farm’s 11kV private distribution network tested and commissioned to support off-grid operation of the facility.',
     metaDescription:
       'Case study: SPS testing and commissioning of an 11kV private distribution network with 4.5km of overhead lines, substations and battery systems at an off-grid poultry farm in Griffith, NSW.',
-    photo: { alt: 'Overhead 11kV lines and substation at the Griffith off-grid poultry farm' },
+    photo: { alt: 'Aerial view of substations and battery enclosures at the Griffith off-grid poultry farm', src: '/photos/griffith-site-aerial.jpg' },
   },
 ]
 

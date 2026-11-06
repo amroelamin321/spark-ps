@@ -31,16 +31,19 @@ npm run lint
 Service and project pages are generated from the data files, so adding a project is a matter of
 adding an entry to `src/data/projects.ts`.
 
-## Adding the client's photos
+## Photos
 
-Every image slot currently shows a labelled placeholder. To replace one:
+Site photos live in `public/photos/` (taken from the client's previous WordPress site; see
+`CLIENT-TODO.md` for which ones and why some were left out). To add or replace one:
 
-1. Put the photo in `public/photos/` (e.g. `public/photos/data-centre-switchroom.jpg`).
+1. Put the photo in `public/photos/` as a JPEG, at most 2000px on the long edge, with location
+   (GPS) metadata removed.
 2. Set `src` on the matching `photo` entry in `src/data/services.ts` or `src/data/projects.ts`,
-   e.g. `photo: { alt: '...', src: '/photos/data-centre-switchroom.jpg' }`.
-3. Update the `alt` text to describe the actual photo.
+   e.g. `photo: { alt: '...', src: '/photos/data-centre-switchroom.jpg' }`, and update `alt` to
+   describe what the photo actually shows.
 
-The home, About and Careers photos are set directly on the `<Photo>` component in those pages.
+The home, About and Careers photos are set directly on the `<Photo>` component in those pages. A
+`<Photo>` without `src` shows a labelled placeholder.
 
 ## Content placeholders
 
